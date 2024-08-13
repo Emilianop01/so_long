@@ -6,7 +6,7 @@
 /*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:57:46 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/11 17:20:42 by epiacent         ###   ########.fr       */
+/*   Updated: 2024/08/13 22:28:36 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	free_exit(char **map)
 	return (-1);
 }
 
-int	quit_map(t_game *game, char *message)
+void	quit_map(t_game *game, char *s)
 {
-	(void)game;
-	(void)message;
-	return (0);
+	ft_putstr_fd(s, 1);
+	free_exit(game->map);
+	exit (0);
 }

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: epiacent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/11 15:10:34 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/11 17:19:45 by epiacent         ###   ########.fr       */
+/*   Created: 2024/08/13 22:45:05 by epiacent          #+#    #+#             */
+/*   Updated: 2024/08/13 22:46:32 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG
-# define SO_LONG
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
 # define TILE_SZ 64
 # include "libft/libft.h"
 # include "mlx/mlx.h"
@@ -19,19 +20,13 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_item
-{
-	void	*img;
-	int		mapx;
-	int		mapy;
-}	t_item;
-
-typedef	struct s_img
+typedef struct s_img
 {
 	void	*floor;
 	void	*wall;
@@ -52,36 +47,38 @@ typedef struct s_mlxs
 
 typedef struct s_game
 {
-	int		maxx;
-	int		maxy;
-	char	**map;
-	int		coll;
-	int		colltoprint;
-	int		px;
-	int		py;
-	t_item	p;
-	t_item	e;
-	t_item	c;
-	t_img	img;
-	t_mlxs	mlxs;
-	int		mov;
+	int			maxx;
+	int			maxy;
+	char		**map;
+	int			coll;
+	int			colltoprint;
+	int			px;
+	int			py;
+	int			mx;
+	int			my;
+	t_img		img;
+	t_mlxs		mlxs;
+	int			mov;
+	long long	ms;
 }	t_game;
 
-int		file_ext(char *map);
-char	*map_conv(char *file);
-int		validate(int argc, char **argv);
-int		check_map(char **map, int lenx, int leny);
-int		check_char(char c, int *flag);
-int		flood_setup(char **map, int leny, int lenx);
-void	flood_fill(char **map, int py, int px, int *l);
-int		free_exit(char **map);
-int		quit_map(t_game *game, char *message);
-int		count_coins(char *str);
-int		starting(t_game *gm, char **argv);
-void	set_images(t_game *gm);
-int		key_map(int keycode, t_game *game);
-int		main(int argc, char **argv);
-int		print_map(t_game *g);
-
+int			file_ext(char *map);
+char		*map_conv(char *file);
+int			validate(int argc, char **argv);
+int			check_map(char **map, int lenx, int leny);
+int			check_char(char c, int *flag);
+int			flood_setup(char **map, int leny, int lenx);
+void		flood_fill(char **map, int py, int px, int *l);
+int			free_exit(char **map);
+int			quit_map(t_game *game, char *message);
+int			count_coins(char *str);
+int			starting(t_game *gm, char **argv);
+void		set_images(t_game *gm);
+int			key_map(int keycode, t_game *game);
+int			main(int argc, char **argv);
+int			print_map(t_game *g);
+void		print_map_call(t_game *g);
+long long	get_time(void);
+void		get_milliseconds(t_game *g);
 
 #endif
