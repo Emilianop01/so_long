@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: epiacent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 22:45:05 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/13 22:46:32 by epiacent         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:22:57 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int			check_char(char c, int *flag);
 int			flood_setup(char **map, int leny, int lenx);
 void		flood_fill(char **map, int py, int px, int *l);
 int			free_exit(char **map);
+int			quit_map2(t_game *g);
 int			quit_map(t_game *game, char *message);
 int			count_coins(char *str);
 int			starting(t_game *gm, char **argv);
