@@ -6,7 +6,7 @@
 /*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 22:45:05 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/14 17:22:57 by epiacent         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:00:00 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,8 @@ int			print_map(t_game *g);
 void		print_map_call(t_game *g);
 long long	get_time(void);
 void		get_milliseconds(t_game *g);
+int			move(t_game *g, int plusx, int plusy);
+void    	change_dir(t_game *g, int *dir);
+void		print_moves(t_game *g);
 
 #endif

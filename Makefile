@@ -4,7 +4,8 @@ SRCS    =	so_long.c checkmap.c \
 			checkmap2.c \
 			frees.c \
 			gamestart.c \
-			hooks.c
+			hooks.c \
+			hooks2.c
 
 OBJS     = ${SRCS:.c=.o}
 MAIN    = so_long.c
@@ -14,8 +15,8 @@ HEADER    = -Iinclude
 CC         = gcc
 CFLAGS     = -Wall -Wextra -Werror -g
 
-.c.o:        %.o : %.c
-	@gcc ${CFLAGS} ${HEADER} -Imlx -c $< -o $(<:.c=.o)
+.c.o:	%.o : %.c
+	@gcc ${CFLAGS} -Imlx -c $< -o $(<:.c=.o)
 
 all:         ${PROG}
 
