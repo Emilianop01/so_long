@@ -6,7 +6,7 @@
 /*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 17:52:42 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/13 22:19:59 by epiacent         ###   ########.fr       */
+/*   Updated: 2024/08/19 12:06:16 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ int	check_char(char c, int *flag)
 		flag[1] += 1;
 	else if (c == 'C')
 		flag[2] += 1;
-	else if (c != '1' && c != '0' && c != 'N')
-		return (-1);
+	else if (c != '1' && c != '0')
+		return (0);
 	return (1);
 }
 

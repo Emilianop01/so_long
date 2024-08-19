@@ -6,7 +6,7 @@
 /*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 16:34:03 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/14 17:22:13 by epiacent         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:05:06 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,13 @@ static void	move_monster(t_game *g)
 		g->map[g->my][g->mx - 1] = 'M';
 		g->mx -= 1;
 	}
+	else if ((g->map[g->my][g->mx - 1] == '1'
+		|| g->map[g->my][g->mx - 1] == 'E'
+		|| g->map[g->my][g->mx - 1] == 'C')
+		&& (g->map[g->my][g->mx + 1] == '1'
+		|| g->map[g->my][g->mx + 1] == 'E'
+		|| g->map[g->my][g->mx + 1] == 'C'))
+		return ;
 	else
 	{
 		dir++;
@@ -128,6 +135,7 @@ int	move(t_game *g, int plusx, int plusy)
 {
 	char	newpos;
 
+	newpos = 0;
 	if (g->map[g->py + plusy][g->px + plusx] != '1'
 		&& (g->map[g->py + plusy][g->px + plusx] != 'E'
 		|| g->coll == g->img.ncoll))
@@ -143,7 +151,7 @@ int	move(t_game *g, int plusx, int plusy)
 		print_map_call(g);
 	}
 	if (newpos == 'M'
-		|| ((g->px - plusx) == g->mx && g->py == g->my))
+		|| ((g->px) == g->mx && g->py == g->my))
 		quit_map(g, "Skill Issue\n");
 	if (newpos == 'E')
 		quit_map(g, "Daje Sei Forte\n");

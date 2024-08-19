@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gamestart.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: epiacent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: epiacent <epiacent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 22:36:01 by epiacent          #+#    #+#             */
-/*   Updated: 2024/08/13 22:36:03 by epiacent         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:09:24 by epiacent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	count_coins(char *str)
 	return (ret);
 }
 
-static void	get_player_pos(t_game *g, char c)
+static void	get_player_pos(t_game *g)
 {
 	int	i;
 	int	j;
@@ -40,15 +40,34 @@ static void	get_player_pos(t_game *g, char c)
 		j = 0;
 		while (g->map[i][j])
 		{
-			if (g->map[i][j] == c && c == 'P')
+			if (g->map[i][j] == 'P')
 			{
 				g->px = j;
 				g->py = i;
 			}
-			if (g->map[i][j] == c && c == 'M')
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	spawn_monster(t_game *g)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (g->map[i])
+	{
+		j = 1;
+		while (g->map[i][j])
+		{
+			if (g->map[i][j] == '0')
 			{
+				g->map[i][j] = 'M';
 				g->mx = j;
 				g->my = i;
+				return ;
 			}
 			j++;
 		}
@@ -70,8 +89,8 @@ int	starting(t_game *gm, char **argv)
 	gm->colltoprint = 0;
 	gm->mov = 0;
 	gm->ms = 0;
-	get_player_pos(gm, 'P');
-	get_player_pos(gm, 'M');
+	get_player_pos(gm);
+	spawn_monster(gm);
 	while (gm->map[i])
 	{
 		gm->coll += count_coins(gm->map[i]);
